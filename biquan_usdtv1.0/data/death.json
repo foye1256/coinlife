@@ -1,0 +1,77 @@
+{
+    "10000": {
+        "id": 10000,
+        "c_event": "因为太过于关注行情，最终被尿憋死。",
+        "e_event": "Because he paid too much attention to the market, he was finally suffocated by urine."
+    },
+    "10001": {
+        "id": 10001,
+        "c_event": "因为钱太多，被人绑架撕票。",
+        "e_event": "Because of too much money, he was kidnapped and tore up tickets."
+    },
+    "10002": {
+        "id": 10002,
+        "c_event": "你在参加区块链大会的中途，被车撞死。",
+        "e_event": "You were killed by a car on the way to the blockchain conference."
+    },
+    "10003": {
+        "id": 10003,
+        "c_event": "你在演讲时被枪杀。",
+        "e_event": "You were shot while giving a speech."
+    },
+    "10004": {
+        "id": 10004,
+        "c_event": "你在做爱的时候被反杀并被抢走了了密钥。",
+        "e_event": "You were killed during sex and robbed of the key."
+    },
+    "10005": {
+        "id": 10005,
+        "c_event": "你因为对赌破产了，开枪自杀。",
+        "e_event": "You went bankrupt for gambling and shot yourself."
+    },
+    "10006": {
+        "id": 10006,
+        "c_event": "因为合约破产，最终饿死街头。",
+        "e_event": "Because the contract went bankrupt, he finally starved to death on the street."
+    },
+    "10007": {
+        "id": 10007,
+        "c_event": "天空突然掉下一条狗，你被砸死了。",
+        "e_event": "A dog suddenly fell from the sky and you were killed."
+    },
+    "10008": {
+        "id": 10008,
+        "c_event": "走路摔了一跤，不小心吃了一口屎，屎里有毒，你死了。",
+        "e_event": "I fell while walking and accidentally ate a mouthful of excrement. The excrement is poisonous. You're dead."
+    },
+    "10009": {
+        "id": 10009,
+        "c_event": "你被FBI发现通过btc买卖毒品，被开枪射杀。",
+        "e_event": "You were caught by the FBI selling drugs through BTC and shot."
+    },
+    "10010": {
+        "id": 10010,
+        "c_event": "对手在暗网中请了杀手，你最终被杀。",
+        "e_event": "Your opponent hired a killer in the dark net, and you were finally killed."
+    },
+    "10011": {
+        "id": 10011,
+        "c_event": "熊市漫漫，你因为炒币倾家荡产，负债累累，你死了。",
+        "e_event": "The bear market is long. You've lost all your money because of speculation. You're in debt. You're dead."
+    },
+    "10012": {
+        "id": 10012,
+        "c_event": "智商太低，钱包被骗，你死了。",
+        "e_event": "Your IQ is too low, your wallet is cheated, and you're dead."
+    },
+    "10013": {
+        "id": 10013,
+        "c_event": "你在暗网中购买了一袋病毒，因为吸食过量，你死了。",
+        "e_event": "You bought a bag of virus in the dark net, and you died because you took too much."
+    },
+    "10014": {
+        "id": 10014,
+        "c_event": "因为用btc洗钱，与警方对峙的过程中被枪杀。",
+        "e_event": "He was shot and killed in a confrontation with the police because of money laundering with BTC."
+    }
+}

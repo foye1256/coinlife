@@ -1,0 +1,332 @@
+{
+	"23001": {
+		"id": 23001,
+		"c_event": "你开始被洗脑疯狂买入eth。",
+		"e_event": "You start to get brainwashed into buying it like crazy."
+	},
+	"23002": {
+		"id": 23002,
+		"c_event": "你创立了eth社群。",
+		"e_event": "You created the eth community."
+	},
+	"23003": {
+		"id": 23003,
+		"c_event": "ico开始流行。",
+		"e_event": "It's starting to catch on."
+	},
+	"23004": {
+		"id": 23004,
+		"c_event": "你投的ico开始跑路了。",
+		"e_event": "The money you invested in is running away."
+	},
+	"23005": {
+		"id": 23005,
+		"c_event": "你投的ico翻了50倍。",
+		"e_event": "You've doubled your vote 50 times."
+	},
+	"23006": {
+		"id": 23006,
+		"c_event": "中国又开始打压btc。",
+		"e_event": "China is cracking down on BTC again."
+	},
+	"23007": {
+		"id": 23007,
+		"c_event": "美国开始对btc通过eth进行了提案。",
+		"e_event": "The United States has begun a proposal to pass the eth at the BTC."
+	},
+	"23008": {
+		"id": 23008,
+		"c_event": "灰度开始买入btc。",
+		"e_event": "I started buying BTC."
+	},
+	"23009": {
+		"id": 23009,
+		"c_event": "中国交易平台交易量逐步增加。",
+		"e_event": "The trading volume of China's trading platform is gradually increasing."
+	},
+	"23010": {
+		"id": 23010,
+		"c_event": "美国交易平台交易量逐步增加",
+		"e_event": "Trading volume on US trading platforms is gradually increasing"
+	},
+	"23011": {
+		"id": 23011,
+		"c_event": "韩国交易平台交易量逐步增加。",
+		"e_event": "The trading volume of Korean trading platforms has gradually increased."
+	},
+	"23012": {
+		"id": 23012,
+		"c_event": "日本交易平台交易量逐步增加。",
+		"e_event": "The trading volume of Japanese trading platforms has gradually increased."
+	},
+	"23013": {
+		"id": 23013,
+		"c_event": "你开始进行私募。",
+		"e_event": "You start a private placement."
+	},
+	"23014": {
+		"id": 23014,
+		"c_event": "你开始玩合约。",
+		"e_event": "You start playing the contract."
+	},
+	"23015": {
+		"id": 23015,
+		"c_event": "你在合约输了很多钱。",
+		"e_event": "You lost a lot of money in the game."
+	},
+	"23016": {
+		"id": 23016,
+		"c_event": "你在合约里面赚了很多钱。",
+		"e_event": "You made a lot of money in the contract."
+	},
+	"23017": {
+		"id": 23017,
+		"c_event": "ico开始火爆起来。",
+		"e_event": "The market began to boom."
+	},
+	"23018": {
+		"id": 23018,
+		"c_event": "你投的很多ico开始翻了几十倍。",
+		"e_event": "Many of the stocks you invested began to multiply dozens of times."
+	},
+	"23019": {
+		"id": 23019,
+		"c_event": "你投的很多ico跑路了。",
+		"e_event": "A lot of money you invested ran away."
+	},
+	"23020": {
+		"id": 23020,
+		"c_event": "你创立了一家投资机构。中国疯狂打压btc。",
+		"e_event": "You started an investment firm. China is crazy to suppress BTC."
+	},
+	"23021": {
+		"id": 23021,
+		"c_event": "btc暴跌了。",
+		"e_event": "The BTC plummeted."
+	},
+	"23022": {
+		"id": 23022,
+		"c_event": "btc暴涨了。",
+		"e_event": "The BTC skyrocketed."
+	},
+	"23023": {
+		"id": 23023,
+		"c_event": "eth开始暴涨。",
+		"e_event": "The eth began to soar."
+	},
+	"23024": {
+		"id": 23024,
+		"c_event": "eth接着暴涨。",
+		"e_event": "The eth then skyrocketed."
+	},
+	"23025": {
+		"id": 23025,
+		"c_event": "终于开起了牛市。",
+		"e_event": "Finally, a bull market began."
+	},
+	"23026": {
+		"id": 23026,
+		"c_event": "okex日进斗金。",
+		"e_event": "The okex is getting rich every day."
+	},
+	"23027": {
+		"id": 23027,
+		"c_event": "bitmex疯狂赚钱。",
+		"e_event": "Bitmex is making money like crazy."
+	},
+	"23028": {
+		"id": 23028,
+		"c_event": "火币开始疯狂赚钱。",
+		"e_event": "Huobin began to make money crazily."
+	},
+	"23029": {
+		"id": 23029,
+		"c_event": "你开始研究老黑的项目。",
+		"e_event": "You start to study the old black project."
+	},
+	"23030": {
+		"id": 23030,
+		"c_event": "你认识了赵长鹏。",
+		"e_event": "You know Zhao Changpeng."
+	},
+	"23031": {
+		"id": 23031,
+		"c_event": "你认识了火星人。",
+		"e_event": "You met the Martians."
+	},
+	"23032": {
+		"id": 23032,
+		"c_event": "你认识了宝二爷。",
+		"e_event": "You know Master Bao."
+	},
+	"23033": {
+		"id": 23033,
+		"c_event": "你认识了何一。",
+		"e_event": "You know He Yi."
+	},
+	"23034": {
+		"id": 23034,
+		"c_event": "你认识了徐明星。",
+		"e_event": "You know Xu Mingxing."
+	},
+	"23035": {
+		"id": 23035,
+		"c_event": "你听说杜军开始疯狂圈钱。",
+		"e_event": "You heard that Du Jun began to circle money crazily."
+	},
+	"23036": {
+		"id": 23036,
+		"c_event": "你认识了李笑来。",
+		"e_event": "You know Li Xiaolai."
+	},
+	"23037": {
+		"id": 23037,
+		"c_event": "江卓尔成立了矿池。",
+		"e_event": "Jiang Zhuoer set up a mining pool."
+	},
+	"23038": {
+		"id": 23038,
+		"c_event": "ico持续火爆你投了很多项目。",
+		"e_event": "The stock market continues to boom, and you have invested in many projects."
+	},
+	"23039": {
+		"id": 23039,
+		"c_event": "ico项目开始跑路。",
+		"e_event": "The project began to run away."
+	},
+	"23040": {
+		"id": 23040,
+		"c_event": "中国进行中国交易所。",
+		"e_event": "China conducts Chinese exchanges."
+	},
+	"23041": {
+		"id": 23041,
+		"c_event": "bitmex合约持仓量达到新高。",
+		"e_event": "The open interest in the bitmex contract reached a new high."
+	},
+	"23042": {
+		"id": 23042,
+		"c_event": "你的资金量越来越多。",
+		"e_event": "You have more and more money."
+	},
+	"23043": {
+		"id": 23043,
+		"c_event": "你的收益越来越多。",
+		"e_event": "Your profits are getting bigger and bigger."
+	},
+	"23044": {
+		"id": 23044,
+		"c_event": "你的公司赚了很多钱。",
+		"e_event": "Your company is making a lot of money."
+	},
+	"23045": {
+		"id": 23045,
+		"c_event": "因为重仓梭哈，收款人跑路了，你亏惨了。",
+		"e_event": "Because of the heavy warehouse Stud, the payee ran away, and you lost a lot."
+	},
+	"23046": {
+		"id": 23046,
+		"c_event": "你开始疯狂消费。",
+		"e_event": "You go on a spending spree."
+	},
+	"23047": {
+		"id": 23047,
+		"c_event": "你买了很多豪车。",
+		"e_event": "You bought a lot of luxury cars."
+	},
+	"23048": {
+		"id": 23048,
+		"c_event": "你玩了很多美女。",
+		"e_event": "You played a lot of beauties."
+	},
+	"23049": {
+		"id": 23049,
+		"c_event": "你开始思考人生。",
+		"e_event": "You start thinking about life."
+	},
+	"23050": {
+		"id": 23050,
+		"c_event": "你因为突然的大回调，损失惨重。",
+		"e_event": "You lost a lot of money because of the sudden big correction."
+	},
+	"23051": {
+		"id": 23051,
+		"c_event": "eth的应用越来越多。",
+		"e_event": "There are more and more applications of eth."
+	},
+	"23052": {
+		"id": 23052,
+		"c_event": "币圈玩法越来越多。",
+		"e_event": "There are more and more ways to play the coin circle."
+	},
+	"23053": {
+		"id": 23053,
+		"c_event": "灰度持续购买btc。",
+		"e_event": "Please keep buying BTC."
+	},
+	"23054": {
+		"id": 23054,
+		"c_event": "矿机市场持续火爆。",
+		"e_event": "The mining machine market continues to boom."
+	},
+	"23055": {
+		"id": 23055,
+		"c_event": "比特大陆矿机占有率逐步提升。",
+		"e_event": "The share of Bitmain mining machines has gradually increased."
+	},
+	"23056": {
+		"id": 23056,
+		"c_event": "很多人开始对btc的扩容有想法。",
+		"e_event": "Many people are beginning to think about the expansion of BTC."
+	},
+	"23057": {
+		"id": 23057,
+		"c_event": "btc出现了分叉概念。",
+		"e_event": "The concept of bifurcation has emerged in BTC."
+	},
+	"23058": {
+		"id": 23058,
+		"c_event": "你购买eth。",
+		"e_event": "You buy it."
+	},
+	"23059": {
+		"id": 23059,
+		"c_event": "你购买btc。",
+		"e_event": "You buy BTC."
+	},
+	"23060": {
+		"id": 23060,
+		"c_event": "你因为黑天鹅导致账户资金归零。",
+		"e_event": "Because of the black swan, your account funds are zero."
+	},
+	"23061": {
+		"id": 23061,
+		"c_event": "btc开始大回调。",
+		"e_event": "The BTC starts the big callback."
+	},
+	"23062": {
+		"id": 23062,
+		"c_event": "美国社保基金开始买入btc。",
+		"e_event": "The US Social Security Fund began to buy BTC."
+	},
+	"23063": {
+		"id": 23063,
+		"c_event": "美国华尔街开始操纵btc。",
+		"e_event": "Wall Street in the United States began to manipulate BTC."
+	},
+	"23064": {
+		"id": 23064,
+		"c_event": "你在暗网中使用btc购买了大量的炸药并炸毁了博物馆。",
+		"e_event": "You used BTC on the dark web to buy a lot of explosives and blow up the museum."
+	},
+	"23065": {
+		"id": 23065,
+		"c_event": "你通过暗网找了一名杀手，用刀给你画了一幅画。",
+		"e_event": "You found a killer through the dark web and drew a picture of you with a knife."
+	},
+	"23066": {
+		"id": 23066,
+		"c_event": "你开始通过暗网进行大量的洗钱。",
+		"e_event": "You start to do a lot of money laundering through the dark web."
+	}
+}

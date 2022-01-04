@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- <script language="javascript" type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="master_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="smartContract.js"></script>
+    <script language="javascript" type="text/javascript" src="usdt_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="utils.js"></script> -->
+
+    <script src="./js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/swiper-4.4.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/web3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/master_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/smartContract.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/usdt_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/bignumber.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <h1>web3.js与智能合约交互</h1>
+    <div id="info">444</div>
+    <span>
+        
+        <button onclick="startGame()">开始</button>
+        <button onclick="startClaim()">claim</button>
+    </span>
+
+    <script>
+         
+    // 2. Start code here
+    var cryptoZombies;
+    var masterFactory;
+    
+
+    function startGame() {
+
+        // 请求狐狸钱包，访问账户，获取当前地址
+        ethereum.request({ method: 'eth_requestAccounts' }).catch(function (reason) {
+            alert('哦！NO, 好像发生了点意外。别着急, 我们很快修复它');
+        }).then(function (accounts) {
+            // 现在你可以启动你的应用并自由访问 Web3.js:  
+            const account = accounts[0];
+            console.log('账户：'+account);
+
+            establishConnection();
+
+            //获取票价信息
+            nowTicket().then(function(result) {
+                var ticket = $.parseJSON(result);
+                console.log("门票: " + ticket);
+                var tickets = ticket * 10;
+
+                allowance(account).then(function(uresult) {
+                    var allowance = $.parseJSON(uresult);
+
+                    var bigAllowance = BigNumber(allowance).toString(10);
+                    var free = BigNumber(tickets).toString(10);
+                    var temp = bigNumCompare(bigAllowance,free);
+
+                   if(temp == 1){
+                        coinlife(1,free,account);
+                   }else{
+                        //调用 usdt授权
+                        var usdt = '0xffffffffffffffffff';
+                        var usdts = eval(usdt).toString(16);
+                        approve(usdts,account).then(function(uresult) {
+                            
+                            var uresult = JSON.stringify(uresult);
+                            console.log("approve result: " + uresult);
+                            
+                        });
+                   }
+                    
+                });
+                
+                //
+                // 调用函数并做一些其他事情
+                // coinlife(1,ticket,account).then(function(result) {
+                //     var coinlife1 = JSON.stringify(result); 
+                //     console.log("coinlife " + coinlife1);
+
+                //     //初始化事件信息
+                //     initial();
+
+                //     var arr = JSON.parse(coinlife1);
+                //     var res_array = new Array();
+                //     for(j = 0; j < arr.length; j++){
+                //         if(0 != arr[j]){
+                //             var step = arr[j];
+                //             res_array.push(getRandomEventsByStep(step));
+                //         }
+                //     }
+
+                //     console.log(res_array.length);
+                //     for (i = 0; i < res_array.length; i++)
+                //     {
+                //         console.log(res_array[i]);
+                //     }
+                // });
+            });
+
+            
+           
+        })
+    }
+
+    function startClaim() {
+        // 请求狐狸钱包，访问账户，获取当前地址
+        ethereum.request({ method: 'eth_requestAccounts' }).catch(function (reason) {
+            alert('哦！NO, 好像发生了点意外。别着急, 我们很快修复它');
+        }).then(function (accounts) {
+            // 现在你可以启动你的应用并自由访问 Web3.js:  
+            const account = accounts[0];
+            console.log('账户：'+account);
+
+            establishConnection();
+
+            claim(account);
+
+            players(account).then(function(result) {
+                var poolInfo = JSON.stringify(result);
+                console.log("players: " + poolInfo);
+            });
+        })
+
+    }
+
+    function startApp(account) {
+
+        // var address = "0x430CF0f4b9B9cA3a29608A62FA4822476270b72e";
+        
+        //2、根据abi,地址获取合约
+        // masterFactory1 = new web3js.eth.Contract(masterABI,address);
+
+        //获取合约连接
+        establishConnection();
+
+        var ticket ;
+        // 调用函数并做一些其他事情
+        nowTicket().then(function(result) {
+            ticket = $.parseJSON(result);
+            console.log("门票1: " + ticket);
+        });
+
+        // 调用函数并做一些其他事情
+        poolInfo().then(function(result) {
+            var poolInfo = JSON.stringify(result);
+            console.log("poolInfo1: " + poolInfo);
+        });
+
+        playerInfo(account).then(function(result) {
+            var poolInfo = JSON.stringify(result);
+            console.log("players: " + poolInfo);
+        });
+
+
+        
+        // var t2 = window.setInterval(function() {
+
+        //     rand(mun).then(function(result) {
+        //         console.log("rand I5: " + JSON.stringify(result));
+        //     });
+        //     console.log('每隔1分钟执行一次');
+
+        // },60000)
+
+    } 
+
+    // Start here 
+    // window.addEventListener('load', function() {   
+
+    //     // 检查用户浏览器有没有安装Metamask插件
+    //     if (typeof window.ethereum.isMetaMask === 'undefined') {
+    //         alert('看起来您需要一个 Dapp 浏览器才能开始使用。')
+    //         alert('请安装 MetaMask！')
+    //     } else {
+    //         // 请求狐狸钱包，访问账户，获取当前地址
+    //         ethereum.request({ method: 'eth_requestAccounts' }).catch(function (reason) {
+    //             alert('哦！NO, 好像发生了点意外。别着急, 我们很快修复它');
+    //         }).then(function (accounts) {
+    //             // 现在你可以启动你的应用并自由访问 Web3.js:  
+    //             const account = accounts[0];
+    //             console.log('账户：'+account);
+    //             startApp(account);
+    //         })
+            
+    //     }
+        
+    // })   
+    
+    window.addEventListener('load', function() {
+
+        // 检查用户浏览器有没有安装Metamask插件
+        if (typeof web3 !== 'undefined') {
+            //使用小狐狸provider
+            web3js = new Web3(web3.currentProvider);
+        } else {
+            alert('看起来您需要一个 Dapp 浏览器才能开始使用。')
+            alert('请安装 MetaMask！')
+        }
+
+        // 请求狐狸钱包，访问账户，获取当前地址
+        ethereum.request({ method: 'eth_requestAccounts' }).catch(function (reason) {
+            alert('哦！NO, 好像发生了点意外。别着急, 我们很快修复它');
+        }).then(function (accounts) {
+            // 现在你可以启动你的应用并自由访问 Web3.js: 
+            const account = accounts[0]; 
+            startApp(account);
+        })
+        
+})
+
+
+ 
+    </script>
+</body>
+</html>

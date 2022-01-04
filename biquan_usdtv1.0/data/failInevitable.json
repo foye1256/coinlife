@@ -1,0 +1,37 @@
+{
+    "40001": {
+        "id": 40001,
+        "c_event": "2010年5月22号你用10000比特币换了几块披萨，你因为披萨有毒导致毒发身亡。",
+        "e_event": "On May 22, 2010, you exchanged 10000 bitcoins for several pieces of pizza. You died because the pizza was poisonous."
+    },
+    "40002": {
+        "id": 40002,
+        "c_event": "你看着这个毛头小子，听他介绍自己是来融资的，立马把他赶了出去。还嘲讽了一句：真他妈的傻子不够用了，来我这骗钱来了，晚上因为被小偷偷光所有财产开枪自杀。",
+        "e_event": "You look at this hairy boy, listen to his introduction, he is here to raise money, and immediately drive him out. He also mocked: what a fucking fool is not enough. He came to me to cheat money. At night, he shot himself because he was stolen all his property by a thief."
+    },
+    "40003": {
+        "id": 40003,
+        "c_event": "新冠爆发，你闭门不出，在家盯着屏幕上显示着的是整个币圈波浪壮阔的大牛市，最终因为踏空吐血而亡。",
+        "e_event": "When the new crown erupts, you stay closed and stare at the screen at home. What is displayed on the screen is the magnificent bull market of the whole coin circle. Finally, you die because you step into the air and spit blood."
+    },
+    "40004": {
+        "id": 40004,
+        "c_event": "你在的的国家将btc定义为主权货币，你最终因为金融危机而破产，最后踩到狗屎滑倒掉下楼。",
+        "e_event": "Your country defined BTC as a sovereign currency. You finally went bankrupt because of the financial crisis. Finally, you slipped and fell downstairs."
+    },
+    "40005": {
+        "id": 40005,
+        "c_event": "在这次暗黑时代中，你的钱包被洗劫一空，你没钱被饿死了。",
+        "e_event": "In this dark age, your wallet was robbed, you had no money and starved to death."
+    },
+    "40006": {
+        "id": 40006,
+        "c_event": "你将资产换成了黄金，被人抢劫枪杀而亡。",
+        "e_event": "You exchanged your assets for gold and were robbed and shot."
+    },
+    "40007": {
+        "id": 40007,
+        "c_event": "你因为参与战争导致终生残疾，旧疾复发而亡。",
+        "e_event": "You were disabled for life because of your participation in the war, and your old illness relapsed and died."
+    }
+}

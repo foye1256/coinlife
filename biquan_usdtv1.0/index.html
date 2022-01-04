@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin circle reopening simulator</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./css/swiper-4.4.1.css"/> -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .clearfix:after{
+            content:"";
+            display:none;
+            height:0;
+            clear:both;
+            visibility: hidden;
+        }
+        .po_re{
+            position: relative;
+        }
+        .po_ab{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-65%);
+            white-space: nowrap;
+        }
+        body{
+            background:#151515 url("images/background.png");
+            background-size: cover;
+            background-position: center 0;
+        }
+        .content{
+            width:1200px;
+            height:100vh;
+            margin:0 auto;
+        }
+        .box{
+            border:1.5px solid #c5b284;
+            border-radius: 10px;
+            margin-bottom:20px;
+        }
+        .title{
+            line-height:50px;
+            border-bottom:1.5px solid #c5b284;
+            font-size:20px;
+            font-weight: bold;
+            font-family:"微软雅黑";
+            text-align: center;
+        }
+        .title2{
+            line-height: 80px;
+            font-size:26px;
+            text-align: center;
+        }
+        /* 左侧 */
+        .left{
+            padding-top:50px;
+            width:20%;
+            float:left;
+            text-align: center;
+        }
+        .people_l{
+            position: absolute;
+            bottom:15px;
+            left: 230px;
+        }
+        .reward{
+            color:#bca880;
+        }
+        .reward .num{
+            margin-top:35px;
+            font-size:32px;
+            font-weight:bold;
+        }
+        .reward .unit{
+            margin:45px auto;
+            font-size:26px;
+            font-weight:bold;
+        }
+        .pass{
+            color:#939292;
+            padding:12px 15px;
+            line-height:26px;
+        }
+        .money{
+            padding:30px 0;
+            color:#939292;
+        }
+        .money .text{
+            margin-bottom:15px;
+        }
+        .money .claim{
+            color:#fff;
+            font-weight: bold;
+        }
+        /* 中间 */
+        .middle{
+            width:60%;
+            float: left;
+            text-align: center;
+        }
+        .header{
+            text-align: center;
+            padding-top:40px;
+        }
+        .time{
+            /* background-color: #0d2f48;
+            border:1px solid #225173;
+            line-height: 38px;
+            font-size:18px;
+            border-radius: 5px; */
+            width:360px;
+            color:#60b2dd;
+            margin:-30px auto 20px auto;
+        }
+        .event{
+            width:430px;
+            height:500px;
+            color:#939292;
+            font-size:20px;
+            margin:0 auto;
+        }
+        .swiper-container{
+            height: 370px;
+            text-align: left;
+        }
+        .swiper-wrapper{
+            height: 370px;
+            text-align: left;
+            overflow-y:scroll; 
+            padding:0 5px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        .swiper-wrapper::-webkit-scrollbar{
+            background: transparent;
+            width:8px;
+            padding:0 5px;
+        }
+        .swiper-wrapper::-webkit-scrollbar-button{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-track{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-track-piece{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-thumb{
+            background: #8a7d5f;
+            border-radius: 10px;
+        }
+        /* .event .con::-webkit-scrollbar{
+            background: url("images/scroll_bg.png");
+            background-size: 100% 100%;
+            background-position: center 0;
+        }
+        .event .con::-webkit-scrollbar-thumb{
+            background: url("images/scroll_btn.png")no-repeat;
+            background-size:100% 100%;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, #d99e00 0%,#fdf140 50%,#d99e00 100%);
+        } */
+        /* .event .swiper-slide{
+            height:auto!important;
+        } */
+        .event .btn{
+            display: inline-block;
+            cursor: pointer;
+            color:#fff;
+        }
+        .price{
+            line-height:45px;
+            color: #fff;
+            font-size: 22px;
+        }
+        .begin{
+            color:#fff;
+            text-align: center;
+        }
+        .begin .btn{
+            cursor: pointer;
+            display: inline-block;
+            border: 0 none;
+            background: transparent;
+            color: #fff;
+        }
+        .begin .btn:disabled{
+            cursor: wait;
+        }
+        .begin .btn span{
+            font-size:18px;
+        }
+        /* 右侧 */
+        .right{
+            width:20%;
+            float: left;
+        }
+        .people_r{
+            position: absolute;
+            bottom:15px;
+            right: 230px;
+        }
+        .language{
+            margin-top:10px;
+            text-align: right;
+            color:#fff;
+            height: 50px;
+        }
+        .info{
+            color:#bca880;
+            word-wrap: break-word;
+        }
+        .info .con{
+            padding:6px 10px;
+            line-height:23px;
+        }
+        .rule{
+            color:#939292;
+            height:506px;
+        }
+        .rule .con{
+            overflow-y: scroll;
+            position: absolute;
+        }
+        .rule_con{
+            white-space: pre-wrap;
+            padding:0 10px 10px 10px;
+            height:410px;
+        }
+        .rule .con::-webkit-scrollbar {
+            display: none;
+        }
+        .round {
+            color: #80a3bc;
+            font-size: 30px;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 15000;
+            }
+            #loading img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            margin-top: -15px;
+            margin-left: -15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content clearfix">
+        <div class="left po_re">
+            <img class="people people_l" src="images/people_l.png" alt="">
+            <div class="box reward">
+                <div class="title">Total prize pool</div>
+                <div class="num"><span id = "allProfit"></span></div>
+                <div class="unit">USDT</div>
+            </div>
+            <div class="box pass po_re">
+                <img style="position: absolute;top:-10px;left:-15px" src="images/left_icon.png" alt="">
+                <div>Total Games:<span id = "allPlayTimes"></span></div>
+                <div>Customs clearance probability：<span id = "succProbability"></span></div>
+                <div>Total number of customs clearance：<span id = "allSuccessTimes"></span></div>
+                <div> Your number of games:<span id = "playTimes"></span></div>
+                <div>Your customs clearance times:<span id = "successTimes"></span></div>
+            </div>
+            <div class="box money po_re">
+                <img style="position: absolute;top:-10px;left:-15px" src="images/left_icon.png" alt="">
+                <div class="text" >Withdrawn amount:</div>
+                <div class="text"><span id = "rewardUsdt" ></span></span>USDT</div>
+                <div class="text">Undrawn amount：</div>
+                <div class="text"><span id = "notExtractedUsdt" ></span>USDT</div>
+                <div class="po_re" style="cursor: pointer;" onclick="clickClaim()">
+                    <img src="images/btn.png" alt="">
+                    <span class="po_ab claim">claim</span>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="header"><img width="700" src="images/header_en.png" alt="币圈重开模拟器"></div>
+            <div class="time po_re">
+                <img src="images/time.png" width="350" alt="">
+                <img style="position: absolute;top:-10px;left:-15px;" src="images/left_icon.png" alt="">
+                <img style="position: absolute;top:-10px;right:-15px;" src="images/right_icon.png" alt="">
+                <div class="po_ab">The end of the game:<span id="time">00:00:00</span></div>
+            </div>
+
+            <div id="loading" style="display: none">
+                <img src="images/loading.gif">
+            </div>
+
+            <div class="event box">
+                <div class="title2">Game event display</div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" id="events">
+                        <div class="swiper-slide">Welcome to the world of rebirth....</div>
+                        <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="swiper-slide">There are 100 events in the game. If you successfully live to 100 levels, you can pass them.</div>
+                        <div class="swiper-slide">Each round of the game will get a little contribution (CT), and the ticket price will increase by 5% for each customs clearance.</div>
+                        <div class="swiper-slide">The amount of claim is based on the proportion of your contribution (CT) to the total contribution (CT).</div>
+                        <div class="swiper-slide">Every time a player plays the game, the time from the end of the game will be re timed. If there are no players after 8 hours, the game will end.</div>
+                        <div class="swiper-slide">Tip: the first 9 times of the game times * 10 will not receive the dividends of the last 9 times. At the same time, the ticket prices of the 10 times are the same and will not be affected by the intermediate customs clearance.</div>
+                        <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="swiper-slide">At the end of the game, all players will receive game medals~</div>
+                        <!-- <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮</div> -->
+                    </div>
+                </div>
+                <div class="btns" style="text-align: center;">
+                    <div class="btn po_re" onclick="toTop()">
+                        <img src="images/btn.png" alt="">
+                        <span class="po_ab">Top</span>
+                    </div>
+                    <div class="btn po_re" onclick="toBottom()">
+                        <img src="images/btn.png" alt="">
+                        <span class="po_ab">Bottom</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="price">Single ticket price:<span id="ticket"></span>USDT</div>
+            <div class="begin">
+                    
+                <button class="btn po_re disabled" onclick="start_game(1)">
+                    <img src="images/begin.png" width="220" alt="">
+                    <span class="po_ab">Number of games*1</span>
+                </button>
+                <button class="btn po_re disabled" onclick="start_game(10)">
+                    <img src="images/begin.png" width="220" alt="">
+                    <span class="po_ab">Number of games*10</span>
+                </button>
+            </div>
+        </div>
+        <div class="right po_re">
+            <img class="people people_r" src="images/people_r.png" alt="">
+            <div class="language clearfix"  style="cursor: pointer;">
+                <div class="po_re" style="text-align: center;float:right" onclick="language()">
+                    <img src="images/language.png" alt="">
+                    <span class="po_ab">Chinese</span>
+                </div>
+            </div>
+            <div class="box info">
+                <div class="title">Player information</div>
+                <div class="con">
+                    <div>Final player：<span id="lastPlayer"></span></div>
+                    <div>Final clearance player:</div>
+                    <div><span id="lastSuccessPlayer"></span></div>
+                    <div>The player with the most customs clearance times:</div>
+                    <div><span id="mostSuccessPlayer"></span></div>
+                </div>
+            </div>
+            <div class="box rule po_re">
+                <img style="position: absolute;top:-10px;right:-15px" src="images/right_icon.png" alt="">
+                <div class="con">
+                    <div class="title2">Rules of the game</div>
+                    <div class="rule_con">Rules:
+1. The player's ticket is divided into 5 awards, including contribution award, victory award, customs clearance award, final warrior award and order award.
+Contributors: each player will receive 55% of the dividends of subsequent players. They will be rewarded through the proportion of game times / total times. The dividends obtained by players can be obtained through the claim button.
+Victory Award: after the countdown, the last player will receive all the rewards accumulated in the reward pool, a total of 20%.
+Clearance Award: after the countdown, the one who has the most clearance times will receive all the awards in the award pool, a total of 5%.
+Final warrior Award: after the countdown, the last player clearance player will receive all the rewards in the reward pool, a total of 10%.
+Order Award: 10% of players' funds will be used as the return of order managers.
+2. The clearance probability is obtained from the latest height of BSC through the hash value, which is about 1 / 128.
+3. At the beginning of customs clearance, the default player is the project sponsor. If no one passes customs clearance, the customs clearance award and the final warrior award will be added to the second game.
+4. The end time of the game is about 8 hours. The specific time depends on the BSC height block.
+The second game may come back not only to the game, but also to your life. Join us and witness how we create the miracle of the coin circle.</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="./js/swiper-4.4.1.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="./js/web3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/master_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/smartContract.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/usdt_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/utils.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="./js/logic.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="./js/logic_en.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/jutils.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/bignumber.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        // //自动滚动
+        // var mySwiper = new Swiper ('.swiper-container', {
+        //     direction: 'vertical', // 垂直切换选项
+        //     loop: false, // 循环模式选项
+        //     speed:2000,
+        //     autoplay: {
+        //         delay: 0,
+        //         stopOnLastSlide: true,
+		// 	    disableOnInteraction: true,
+        //         waitForTransition: false,
+        //         // pauseOnMouseEnter:true,
+        //     },
+        //     slidesPerView:18,
+        //     observer: true,
+		//     observeParents: true,
+        //     // // 如果需要分页器
+        //     // pagination: {
+        //     // el: '.swiper-pagination',
+        //     // },
+            
+        //     // // 如果需要前进后退按钮
+        //     // navigation: {
+        //     // nextEl: '.swiper-button-next',
+        //     // prevEl: '.swiper-button-prev',
+        //     // },
+            
+        //     // // 如果需要滚动条
+        //     // scrollbar: {
+        //     // el: '.swiper-scrollbar',
+        //     // },
+        // })
+        
+        function language() {
+          window.location.href='index_zh.html';
+        }
+        function toTop(){
+            // mySwiper.autoplay.stop()
+            // $(".swiper-wrapper").css("transform","translate3d(0px, 0px, 0px)")
+            $(".swiper-wrapper").scrollTop(0)
+        }
+        function toBottom(){
+            // mySwiper.autoplay.stop()
+            // var val = "-"+($(".swiper-slide").length*20.55-370)
+            // $(".swiper-wrapper").css("transform","translate3d(0px, "+val+"px, 0px)")
+            for(let i in eventTimeout){
+                clearTimeout(eventTimeout[i])
+            }
+            var str = zh_arr.join("")
+            $("#events").html(str)
+            $(".swiper-wrapper").scrollTop(99999)
+            $(".disabled").attr("disabled",false)
+        }
+    </script>
+</body>
+</html>

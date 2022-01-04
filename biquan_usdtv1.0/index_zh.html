@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>币圈重开模拟器</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./css/swiper-4.4.1.css"/> -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .clearfix:after{
+            content:"";
+            display:none;
+            height:0;
+            clear:both;
+            visibility: hidden;
+        }
+        .po_re{
+            position: relative;
+        }
+        .po_ab{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-65%);
+            white-space: nowrap;
+        }
+        body{
+            background:#151515 url("images/background.png");
+            background-size: cover;
+            background-position: center 0;
+        }
+        .content{
+            width:1200px;
+            height:100vh;
+            margin:0 auto;
+        }
+        .box{
+            border:1.5px solid #c5b284;
+            border-radius: 10px;
+            margin-bottom:20px;
+        }
+        .title{
+            line-height:50px;
+            border-bottom:1.5px solid #c5b284;
+            font-size:26px;
+            font-weight: bold;
+            font-family:"微软雅黑";
+            text-align: center;
+        }
+        .title2{
+            line-height: 80px;
+            font-size:26px;
+            text-align: center;
+        }
+        /* 左侧 */
+        .left{
+            padding-top:50px;
+            width:20%;
+            float:left;
+            text-align: center;
+        }
+        .people_l{
+            position: absolute;
+            bottom:15px;
+            left: 230px;
+        }
+        .reward{
+            color:#bca880;
+        }
+        .reward .address{
+            margin-top:35px;
+            font-size:18px;
+            font-weight:bold;
+        }
+        .reward .num{
+            margin-top:35px;
+            font-size:32px;
+            font-weight:bold;
+        }
+        .reward .unit{
+            margin:45px auto;
+            font-size:26px;
+            font-weight:bold;
+        }
+        .pass{
+            color:#939292;
+            padding:60px 50px;
+            line-height:26px;
+        }
+        .money{
+            padding:30px 0;
+            color:#939292;
+        }
+        .money .text{
+            margin-bottom:15px;
+        }
+        .money .claim{
+            color:#fff;
+            font-weight: bold;
+        }
+        /* 中间 */
+        .middle{
+            width:60%;
+            float: left;
+            text-align: center;
+        }
+        .header{
+            text-align: center;
+            padding-top:40px;
+        }
+        .time{
+            /* background-color: #0d2f48;
+            border:1px solid #225173;
+            line-height: 38px;
+            font-size:18px;
+            border-radius: 5px; */
+            width:360px;
+            color:#60b2dd;
+            margin:-30px auto 20px auto;
+        }
+        .event{
+            width:430px;
+            height:500px;
+            color:#939292;
+            font-size:20px;
+            margin:0 auto;
+        }
+        .swiper-container{
+            height: 370px;
+            text-align: left;
+        }
+        .swiper-wrapper{
+            height: 370px;
+            text-align: left;
+            overflow-y:scroll; 
+            padding:0 5px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        .swiper-wrapper::-webkit-scrollbar{
+            background: transparent;
+            width:8px;
+            padding:0 5px;
+        }
+        .swiper-wrapper::-webkit-scrollbar-button{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-track{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-track-piece{
+
+        }
+        .swiper-wrapper::-webkit-scrollbar-thumb{
+            background: #8a7d5f;
+            border-radius: 10px;
+        }
+        /* .event .con::-webkit-scrollbar{
+            background: url("images/scroll_bg.png");
+            background-size: 100% 100%;
+            background-position: center 0;
+        }
+        .event .con::-webkit-scrollbar-thumb{
+            background: url("images/scroll_btn.png")no-repeat;
+            background-size:100% 100%;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, #d99e00 0%,#fdf140 50%,#d99e00 100%);
+        } */
+        /* .event .swiper-slide{
+            height:auto!important;
+        } */
+        .event .btn{
+            display: inline-block;
+            cursor: pointer;
+            color:#fff;
+        }
+        .price{
+            line-height:45px;
+            color: #fff;
+            font-size: 22px;
+        }
+        .begin{
+            color:#fff;
+            text-align: center;
+        }
+        .begin .btn{
+            cursor: pointer;
+            display: inline-block;
+            border: 0 none;
+            background: transparent;
+            color: #fff;
+        }
+        .begin .btn:disabled{
+            cursor: wait;
+        }
+        .begin .btn span{
+            font-size:18px;
+        }
+        /* 右侧 */
+        .right{
+            width:20%;
+            float: left;
+        }
+        .people_r{
+            position: absolute;
+            bottom:15px;
+            right: 230px;
+        }
+        .language{
+            margin-top:10px;
+            text-align: right;
+            color:#fff;
+            height: 100px;
+        }
+        .info{
+            color:#bca880;
+            word-wrap: break-word;
+        }
+        .info .con{
+            padding:0 10px;
+            line-height:26px;
+        }
+        .rule{
+            color:#939292;
+            height:538px;
+        }
+        .rule .con{
+            overflow-y: scroll;
+            position: absolute;
+        }
+        .rule_con{
+            white-space: pre-wrap;
+            padding:0 10px 10px 10px;
+            height:420px;
+        }
+        .rule .con::-webkit-scrollbar {
+            display: none;
+        }
+        .round {
+            color: #80a3bc;
+            font-size: 30px;
+        }
+
+        .modal{
+			position: absolute;
+			top: 40%;
+			left: -150%;
+			width: 300px;
+			transform: translate(-50%,-50%);
+			border-radius: 5px;
+			background: #fff;
+			box-shadow: 2px 3px 20px rgba(0,0,0,0.2);
+			z-index: 120;
+			display: none;
+		}
+		.modal .modal-header{
+			height: 50px;
+			border-bottom: 1px solid #f5f5f5;
+			padding: 0 15px;
+		}
+		.modal .modal-header p {
+			line-height: 50px;
+			display: inline-block;
+		}
+		.modal .modal-header .title{	
+			font-size: 18px;
+			color: #333;
+		}
+		.modal .modal-header .close{
+			float: right;
+			font-size: 26px;
+			margin-top: -2px;
+			color: #9C9FA4;
+			cursor: default;
+		}
+		.modal .modal-content{
+			min-height: 100px;
+		}
+		.modal .modal-footer .btn{
+			padding: 0 20px;
+			height: 36px;
+			line-height: 36px;
+			color: white;
+			background: #409EFF;
+			border: none;
+		}
+		.modal .modal-footer{
+			border-top: 1px solid #f5f5f5;
+			padding: 15px;
+			text-align: right;
+ 
+		}
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 15000;
+            }
+            #loading img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            margin-top: -15px;
+            margin-left: -15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content clearfix">
+        <div class="left po_re">
+            <img class="people people_l" src="images/people_l.png" alt="">
+
+            <div class="box reward">
+                <div class="title">钱包地址</div>
+                <div class="address"><span id = "playerAddress"></span></div>
+            </div>
+
+            <div class="box reward">
+                <div class="title">总奖池</div>
+                <div class="num"><span id = "allProfit"></span></div>
+                <div class="unit">USDT</div>
+            </div>
+            <div class="box pass po_re">
+                <img style="position: absolute;top:-10px;left:-15px" src="images/left_icon.png" alt="">
+                <div>游戏总次数：<span id = "allPlayTimes"></span></div>
+                <div>通关概率：<span id = "succProbability"></span></div>
+                <div>通关总人数：<span id = "allSuccessTimes"></span></div>
+                <div>您的游戏次数：<span id = "playTimes"></span></div>
+                <div>您的通关次数：<span id = "successTimes"></span></div>
+            </div>
+            <div class="box money po_re">
+                <img style="position: absolute;top:-10px;left:-15px" src="images/left_icon.png" alt="">
+                <div class="text" >已提取金额：</div>
+                <div class="text"><span id = "rewardUsdt" ></span></span>USDT</div>
+                <div class="text">未提取金额：</div>
+                <div class="text"><span id = "notExtractedUsdt" ></span>USDT</div>
+                <div class="po_re" style="cursor: pointer;" onclick="clickClaim()">
+                    <img src="images/btn.png" alt="">
+                    <span class="po_ab claim">claim</span>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="header"><img width="700" src="images/header.png" alt="币圈重开模拟器"></div>
+            <div class="time po_re">
+                <img src="images/time.png" width="350" alt="">
+                <img style="position: absolute;top:-10px;left:-15px;" src="images/left_icon.png" alt="">
+                <img style="position: absolute;top:-10px;right:-15px;" src="images/right_icon.png" alt="">
+                <div class="po_ab">距离游戏结束：<span id="time">00:00:00</span></div>
+            </div>
+
+            <div id="loading" style="display: none">
+                <img src="images/loading.gif">
+            </div>
+
+            <div class="event box">
+                <div class="title2">游戏事件显示</div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" id="events">
+                        <div class="swiper-slide">欢迎来到重生的世界....</div>
+                        <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="swiper-slide">游戏总共有100个事件，成功活到100关算通关。</div>
+                        <div class="swiper-slide">每玩一轮游戏会获得会获得一点贡献度（ct），每通关一次游戏门票价格会增加5%。</div>
+                        <div class="swiper-slide">claim的金额根据你的贡献度（ct）占总贡献度（ct）的比例获得收益。</div>
+                        <div class="swiper-slide">每有一名玩家玩游戏时，距离游戏结束时间都会重新计时，如果8小时后没有游戏玩家则游戏结束。</div>
+                        <div class="swiper-slide">小提示：游戏次数*10中的前9次不会获得后9次的分红，同时10次门票价格都一样不会受到中间通关的影响。</div>
+
+                        <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="swiper-slide">游戏结束后所有玩家都会获得游戏勋章奖励~</div>
+                        <!-- <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮第一轮</div>
+                        <div class="swiper-slide">第一轮</div> -->
+                    </div>
+                </div>
+                <div class="btns" style="text-align: center;">
+                    <div class="btn po_re" onclick="toTop()">
+                        <img src="images/btn.png" alt="">
+                        <span class="po_ab">置顶</span>
+                    </div>
+                    <div class="btn po_re" onclick="toBottom()">
+                        <img src="images/btn.png" alt="">
+                        <span class="po_ab">置底</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="price">单次门票价格：<span id="ticket"></span>USDT</div>
+            <div class="begin">
+                <button class="btn po_re disabled" onclick="start_game(1)">
+                    <img src="images/begin.png" width="220" alt="">
+                    <span class="po_ab">游戏次数*1</span>
+                </button>
+                <button class="btn po_re disabled" onclick="start_game(10)">
+                    <img src="images/begin.png" width="220" alt="">
+                    <span class="po_ab">游戏次数*10</span>
+                </button>
+            </div>
+        </div>
+        <div class="right po_re">
+            <img class="people people_r" src="images/people_r.png" alt="">
+            <div class="language clearfix"  style="cursor: pointer;">
+                <div class="po_re" style="text-align: center;float:right"  id="connectWallet" >
+                    <img src="images/language.png" alt="">
+                    <span class="po_ab">连接钱包</span>
+                </div>
+
+                <div class="po_re" style="text-align: center;float:right" onclick="language()">
+                    <img src="images/language.png" alt="">
+                    <span class="po_ab">English</span>
+                </div>
+            </div>
+            <div class="box info">
+                <div class="title">玩家信息</div>
+                <div class="con">
+                    <div>最后玩家：</div>
+                    <div><span id="lastPlayer"></span></div>
+                    <div>最后玩家获得：<span id="lastPlayerProfit"></span>USDT</div>
+                    <div>最后通关玩家：</div>
+                    <div><span id="lastSuccessPlayer"></span></div>
+                    <div>最后通关玩家获得：<span id="lastSuccessPlayerProfit"></span>USDT</div>
+                    <div>通关次数最多的玩家：</div>
+                    <div><span id="mostSuccessPlayer"></span></div>
+                    <div>通关次数最多的玩家获得：<span id="mostPlayerProfit"></span>USDT</div>
+                </div>
+            </div>
+            <div class="box rule po_re">
+                <img style="position: absolute;top:-10px;right:-15px" src="images/right_icon.png" alt="">
+                <div class="con">
+                    <div class="title2">游戏规则</div>
+                    <div class="rule_con">规则：
+1.玩家门票总共分5个奖，贡献奖、胜利奖、通关奖、最后勇士奖、秩序奖。
+贡献者：每名玩家会获得后续玩家55%的分红，通过游戏次数/总次数占比获得奖励，玩家所获得的分红可以通过claim按钮获得。
+胜利奖：倒计时结束后最后一名玩家会获得奖池中积累的所有奖励，共计20%。
+通关奖：倒计时结束后通关次数最多的会获得奖池中所有的奖励，共计5%。
+最后勇士奖：倒计时结束后最后一名通关玩家会获得奖池中所有的奖励，共计10%。
+秩序奖：玩家10%的资金会做为管理秩序者的回报。
+2.通关概率是从bsc最新高度经过hash值获得，约为1/128。
+3.最开始的通关默认玩家是项目发起人，如果没有人通关，则通关奖和最后勇士奖会加入到第二场游戏中。
+4.游戏结束时间约为8小时左右，具体时间根据bsc高度块有关。
+
+.第二场可能重来的不仅仅是游戏，还有你的人生。加入我们，见证我们如何创造出币圈的奇迹。</div>
+
+                </div>
+            </div>
+
+            <div id="myModal" class="modal">
+                <div class="modal-header">
+                    <p class="title">连接钱包</p>
+                    <p class="close">×</p>
+                </div>
+                <div class="modal-content">
+                    <div>
+                        <button class="MetaMask btn" id="wallet-connect-metamask" width="100%" scale="md">
+                            <svg viewBox="0 0 40 40" width="40px" color="text" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM la-Dshj"><path d="M36.0112 3.33337L22.1207 13.6277L24.7012 7.56091L36.0112 3.33337Z" fill="#E17726"></path><path d="M4.00261 3.33337L17.7558 13.7238L15.2989 7.56091L4.00261 3.33337Z" fill="#E27625"></path><path d="M31.0149 27.2023L27.3227 32.8573L35.2287 35.0397L37.4797 27.3258L31.0149 27.2023Z" fill="#E27625"></path><path d="M2.53386 27.3258L4.77116 35.0397L12.6772 32.8573L8.9987 27.2023L2.53386 27.3258Z" fill="#E27625"></path><path d="M12.2518 17.6496L10.0419 20.9712L17.8793 21.3281L17.6048 12.8867L12.2518 17.6496Z" fill="#E27625"></path><path d="M27.762 17.6494L22.3129 12.7905L22.1207 21.3279L29.9581 20.9711L27.762 17.6494Z" fill="#E27625"></path><path d="M12.6772 32.8574L17.3989 30.5652L13.336 27.3809L12.6772 32.8574Z" fill="#E27625"></path><path d="M22.6009 30.5652L27.3226 32.8574L26.6637 27.3809L22.6009 30.5652Z" fill="#E27625"></path><path d="M27.3226 32.8575L22.6009 30.5653L22.9715 33.6399L22.9303 34.9301L27.3226 32.8575Z" fill="#D5BFB2"></path><path d="M12.6772 32.8575L17.0694 34.9301L17.042 33.6399L17.3989 30.5653L12.6772 32.8575Z" fill="#D5BFB2"></path><path d="M17.1518 25.3495L13.2262 24.1965L15.9988 22.92L17.1518 25.3495Z" fill="#233447"></path><path d="M22.848 25.3495L24.001 22.92L26.801 24.1965L22.848 25.3495Z" fill="#233447"></path><path d="M12.6773 32.8573L13.3635 27.2023L8.99876 27.3258L12.6773 32.8573Z" fill="#CC6228"></path><path d="M26.6364 27.2023L27.3227 32.8573L31.0149 27.3258L26.6364 27.2023Z" fill="#CC6228"></path><path d="M29.9581 20.9709L22.1207 21.3278L22.8482 25.3495L24.0011 22.92L26.8012 24.1965L29.9581 20.9709Z" fill="#CC6228"></path><path d="M13.2263 24.1965L15.9989 22.92L17.1519 25.3495L17.8793 21.3278L10.0419 20.9709L13.2263 24.1965Z" fill="#CC6228"></path><path d="M10.0419 20.9709L13.3361 27.3809L13.2263 24.1965L10.0419 20.9709Z" fill="#E27525"></path><path d="M26.8011 24.1965L26.6638 27.3809L29.958 20.9709L26.8011 24.1965Z" fill="#E27525"></path><path d="M17.8793 21.3278L17.1519 25.3494L18.0715 30.0985L18.2637 23.8396L17.8793 21.3278Z" fill="#E27525"></path><path d="M22.1205 21.3278L21.7499 23.8258L21.9283 30.0985L22.848 25.3494L22.1205 21.3278Z" fill="#E27525"></path><path d="M22.848 25.3496L21.9284 30.0987L22.601 30.5654L26.6638 27.381L26.8011 24.1967L22.848 25.3496Z" fill="#F5841F"></path><path d="M13.2262 24.1967L13.336 27.381L17.3989 30.5654L18.0714 30.0987L17.1518 25.3496L13.2262 24.1967Z" fill="#F5841F"></path><path d="M22.9303 34.93L22.9715 33.6398L22.6284 33.3378H17.3714L17.042 33.6398L17.0694 34.93L12.6772 32.8574L14.2145 34.1202L17.3302 36.2751H22.6696L25.7853 34.1202L27.3226 32.8574L22.9303 34.93Z" fill="#C0AC9D"></path><path d="M22.601 30.5653L21.9284 30.0986H18.0715L17.3989 30.5653L17.0421 33.6399L17.3715 33.3379H22.6285L22.9716 33.6399L22.601 30.5653Z" fill="#161616"></path><path d="M36.5875 14.3003L37.7542 8.61779L36.011 3.33337L22.6009 13.2846L27.7618 17.6493L35.0365 19.7768L36.6424 17.8964L35.9424 17.3886L37.0679 16.3728L36.2169 15.7003L37.3287 14.863L36.5875 14.3003Z" fill="#763E1A"></path><path d="M2.24573 8.61779L3.42615 14.3003L2.67123 14.863L3.78302 15.7003L2.93202 16.3728L4.05753 17.3886L3.35752 17.8964L4.96343 19.7768L12.2518 17.6493L17.399 13.2846L4.00263 3.33337L2.24573 8.61779Z" fill="#763E1A"></path><path d="M35.0365 19.777L27.7619 17.6495L29.958 20.9712L26.6638 27.3811L31.0149 27.3262H37.4797L35.0365 19.777Z" fill="#F5841F"></path><path d="M12.2517 17.6495L4.96332 19.777L2.53386 27.3262H8.99869L13.336 27.3811L10.0419 20.9712L12.2517 17.6495Z" fill="#F5841F"></path><path d="M22.1205 21.3276L22.6009 13.2843L24.701 7.56067H15.2988L17.3988 13.2843L17.8792 21.3276L18.0577 23.8531L18.0714 30.0984H21.9283L21.9421 23.8531L22.1205 21.3276Z" fill="#F5841F"></path></svg>
+                            <div font-size="14px" color="text" class="sc-gtsrHT jFEWVt">Metamask</div>
+                        </button>
+                        <!-- <button class="MetaMask btn" >MetaMask</button> -->
+                    </div>
+                    <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div>
+                        <button class="TokenPocket btn" id="wallet-connect-tokenpocket" width="100%" scale="md">
+                            <svg viewBox="0 0 40 40" width="40px" color="text" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM la-Dshj">
+                                <path d="M17.6755 13.1415V5.73914H3.98114C3.70355 5.73914 3.51849 5.92419 3.51849 6.20178V16.6576C3.51849 16.9352 3.70355 17.1203 3.98114 17.1203H9.25532V36.1814C9.25532 36.4589 9.44038 36.644 9.71797 36.644H18.3232C18.6008 36.644 18.7859 36.4589 18.7859 36.1814V13.1415H17.6755Z" fill="#29AEFF"></path>
+                                <path d="M27.2061 3.33337H23.875H14.8997C14.6221 3.33337 14.437 3.51843 14.437 3.79602V33.7756C14.437 34.0532 14.6221 34.2382 14.8997 34.2382H23.5049C23.7825 34.2382 23.9676 34.0532 23.9676 33.7756V26.1882H27.2986C33.5906 26.1882 38.6797 21.099 38.6797 14.807C38.6797 8.4225 33.4981 3.33337 27.2061 3.33337Z" fill="#2761E7"></path>
+                            </svg>
+                            <div font-size="14px" color="text" class="sc-gtsrHT jFEWVt">TokenPocket</div>
+                        </button>
+                    </div>
+                    <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div>
+                        <button class="imToken btn" id="wallet-connect-imToken" width="100%" scale="md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 93 93">
+                                <defs>
+                                    <linearGradient id="a" x1="97.185%" x2="-.038%" y1="3.105%" y2="99.699%">
+                                        <stop offset="0%" stop-color="#11C4D1"/>
+                                        <stop offset="100%" stop-color="#0062AD"/>
+                                    </linearGradient>
+                                </defs>
+                                <g fill="none" fill-rule="nonzero">
+                                    <path fill="url(#a)" d="M92.755 63.804s0 9.64-1.028 13.78c-1.028 4.187-2.985 7.06-5.09 9.202-2.154 2.142-4.993 4.09-9.3 5.112-4.356 1.023-13.754.974-13.754.974H29.417s-9.642 0-13.803-1.022c-4.16-1.071-7.097-2.97-9.25-5.113-2.155-2.142-4.112-4.966-5.091-9.3-1.028-4.333-.98-13.682-.98-13.682V29.671s0-9.64 1.029-13.78c1.027-4.187 2.985-7.06 5.09-9.202 2.154-2.142 4.993-4.09 9.3-5.113C20.068.554 29.466.603 29.466.603h34.166s9.642 0 13.803 1.022c4.16 1.071 7.097 2.97 9.25 5.113 2.154 2.142 4.112 4.966 5.091 9.3.98 4.333.98 13.682.98 13.682v34.084z"/>
+                                    <path fill="#FFF" d="M78.267 28.795c1.909 26.244-15.614 38.71-31.326 40.073-14.587 1.265-28.292-7.304-29.467-20.597-.979-10.955 6.07-15.678 11.6-16.117 5.679-.486 10.427 3.263 10.867 7.84.392 4.382-2.447 6.427-4.454 6.573-1.566.146-3.524-.78-3.72-2.727-.147-1.704.538-1.899.342-3.7-.293-3.214-3.181-3.555-4.747-3.409-1.91.146-5.385 2.338-4.944 7.694.49 5.404 5.874 9.69 12.922 9.056 7.636-.682 12.971-6.378 13.363-14.412 0-.439.098-.828.293-1.218.098-.146.147-.292.294-.438.196-.292.392-.536.636-.779l.686-.682c3.328-3.019 15.37-10.225 26.676-7.985.098 0 .196.049.245.097.44 0 .685.341.734.73"/>
+                                </g>
+                            </svg>
+                            <div font-size="14px" color="text" class="sc-gtsrHT jFEWVt">imToken</div>
+                        </button>
+                        <!-- <button class="imToken btn" >imToken</button> -->
+                    </div>
+                    <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div>
+                        <button class="trustWallet btn" id="wallet-connect-trust wallet" width="100%" scale="md">
+                            <svg viewBox="0 0 40 40" width="40px" color="text" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM la-Dshj">
+                                <path opacity="0.9" d="M19.9959 4.8377L20.7771 3.82105C20.5523 3.64825 20.2766 3.55457 19.9931 3.55457C19.7095 3.55457 19.4339 3.64825 19.209 3.82105L19.9959 4.8377ZM33.425 8.7837H34.7059C34.7081 8.61378 34.6767 8.44509 34.6134 8.28737C34.5502 8.12965 34.4563 7.98603 34.3372 7.8648C34.2181 7.74358 34.0762 7.64714 33.9196 7.58107C33.763 7.515 33.5949 7.4806 33.425 7.47985V8.7837ZM19.9959 36.2161L19.2837 37.2845C19.4936 37.425 19.7405 37.5 19.9931 37.5C20.2457 37.5 20.4925 37.425 20.7024 37.2845L19.9959 36.2161ZM6.57841 8.7837V7.49709C6.40847 7.49783 6.24036 7.53223 6.0838 7.5983C5.92723 7.66437 5.7853 7.76081 5.66621 7.88204C5.54712 8.00326 5.45322 8.14688 5.38995 8.3046C5.32667 8.46232 5.29526 8.63101 5.29754 8.80093L6.57841 8.7837ZM19.2148 5.84861C25.0275 10.3518 31.6846 10.0646 33.4307 10.0646V7.49709C31.6214 7.49709 25.8259 7.72684 20.7943 3.82105L19.2148 5.84861ZM32.1499 8.76073C32.0522 14.7113 31.7995 18.91 31.317 22.0174C30.8345 25.1248 30.1682 26.9399 29.2894 28.238C28.4106 29.5361 27.2848 30.3804 25.6364 31.3626C23.9879 32.3448 21.8799 33.4361 19.2837 35.1535L20.7312 37.2845C23.1895 35.6475 25.2343 34.6021 26.9747 33.5625C28.7284 32.6075 30.2502 31.2779 31.4319 29.6682C32.5806 27.9451 33.3675 25.6475 33.873 22.408C34.3785 19.1685 34.6369 14.809 34.7346 8.80093L32.1499 8.76073ZM20.7312 35.1535C18.1522 33.4304 16.05 32.362 14.413 31.3684C12.776 30.3747 11.6502 29.582 10.7656 28.238C9.8811 26.8939 9.16312 25.1076 8.66915 22.0174C8.17519 18.9273 7.95692 14.7113 7.85928 8.76073L5.29754 8.80093C5.39518 14.809 5.6594 19.18 6.15911 22.408C6.65882 25.636 7.42275 27.9336 8.59448 29.6682C9.77051 31.2788 11.2888 32.6088 13.0402 33.5625C14.7633 34.6021 16.8254 35.6475 19.2837 37.2845L20.7312 35.1535ZM6.57841 10.0646C8.30155 10.0646 14.9644 10.3518 20.7771 5.84861L19.209 3.82105C14.166 7.72684 8.37048 7.49709 6.57266 7.49709L6.57841 10.0646Z" fill="#3688EB"></path>
+                            </svg>
+                            <div font-size="14px" color="text" class="sc-gtsrHT jFEWVt">Trust Wallet</div>
+                        </button>
+                        <!-- <button class="trustWallet btn" >trustWallet</button> -->
+                    </div>
+                    <div class="swiper-slide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div>
+                        <button class="mathWalelt btn" id="wallet-connect-mathwallet" width="100%" scale="md">
+                            <svg viewBox="0 0 40 40" width="40px" color="text" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM la-Dshj"><path d="M0 10C0 4.47715 4.47715 0 10 0H30C35.5228 0 40 4.47715 40 10V30C40 35.5228 35.5228 40 30 40H10C4.47715 40 0 35.5228 0 30V10Z" fill="white"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M30 0.416667H10C4.70727 0.416667 0.416667 4.70727 0.416667 10V30C0.416667 35.2927 4.70727 39.5833 10 39.5833H30C35.2927 39.5833 39.5833 35.2927 39.5833 30V10C39.5833 4.70727 35.2927 0.416667 30 0.416667ZM10 0C4.47715 0 0 4.47715 0 10V30C0 35.5228 4.47715 40 10 40H30C35.5228 40 40 35.5228 40 30V10C40 4.47715 35.5228 0 30 0H10Z" fill="#E7E3EB"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M27.6906 18.2129C27.0383 17.5606 27.0383 16.503 27.6906 15.8508C28.3429 15.1985 29.4004 15.1985 30.0527 15.8508C30.705 16.503 30.705 17.5606 30.0527 18.2129C29.4004 18.8651 28.3429 18.8651 27.6906 18.2129ZM22.0806 23.8229C21.5914 23.3337 21.5914 22.5405 22.0806 22.0513C22.5698 21.5621 23.363 21.5621 23.8522 22.0513C24.3414 22.5405 24.3414 23.3337 23.8522 23.8229C23.363 24.3121 22.5698 24.3121 22.0806 23.8229ZM30.9385 20.8702C30.4493 20.381 30.4493 19.5879 30.9385 19.0987C31.4277 18.6094 32.2208 18.6094 32.7101 19.0987C33.1993 19.5879 33.1993 20.381 32.7101 20.8702C32.2208 21.3594 31.4277 21.3594 30.9385 20.8702ZM27.9859 23.8229C27.4966 23.3337 27.4966 22.5405 27.9859 22.0513C28.4751 21.5621 29.2682 21.5621 29.7574 22.0513C30.2466 22.5405 30.2466 23.3337 29.7574 23.8229C29.2682 24.3121 28.4751 24.3121 27.9859 23.8229ZM34.1864 23.5276C33.8602 23.2015 33.8602 22.6727 34.1864 22.3465C34.5125 22.0204 35.0413 22.0204 35.3674 22.3465C35.6936 22.6727 35.6936 23.2015 35.3674 23.5276C35.0413 23.8537 34.5125 23.8537 34.1864 23.5276ZM31.2337 26.4802C30.9076 26.1541 30.9076 25.6253 31.2337 25.2992C31.5599 24.973 32.0887 24.973 32.4148 25.2992C32.7409 25.6253 32.7409 26.1541 32.4148 26.4802C32.0887 26.8064 31.5599 26.8064 31.2337 26.4802ZM24.738 21.1655C24.0857 20.5132 24.0857 19.4557 24.738 18.8034C25.3902 18.1511 26.4478 18.1511 27.1001 18.8034C27.7523 19.4557 27.7523 20.5132 27.1001 21.1655C26.4478 21.8178 25.3902 21.8178 24.738 21.1655ZM24.738 15.2602C24.0857 14.608 24.0857 13.5504 24.738 12.8981C25.3902 12.2459 26.4478 12.2459 27.1001 12.8981C27.7523 13.5504 27.7523 14.608 27.1001 15.2602C26.4478 15.9125 25.3902 15.9125 24.738 15.2602ZM21.7853 18.2129C21.1331 17.5606 21.1331 16.503 21.7853 15.8508C22.4376 15.1985 23.4952 15.1985 24.1474 15.8508C24.7997 16.503 24.7997 17.5606 24.1474 18.2129C23.4952 18.8651 22.4376 18.8651 21.7853 18.2129ZM15.8526 18.2129C15.2004 17.5606 15.2004 16.503 15.8526 15.8508C16.5049 15.1985 17.5625 15.1985 18.2147 15.8508C18.867 16.503 18.867 17.5606 18.2147 18.2129C17.5625 18.8651 16.5049 18.8651 15.8526 18.2129ZM10.2427 23.8229C9.75345 23.3337 9.75345 22.5405 10.2427 22.0513C10.7319 21.5621 11.525 21.5621 12.0142 22.0513C12.5034 22.5405 12.5034 23.3337 12.0142 23.8229C11.525 24.3121 10.7319 24.3121 10.2427 23.8229ZM19.1005 20.8702C18.6113 20.381 18.6113 19.5879 19.1005 19.0987C19.5897 18.6094 20.3829 18.6094 20.8721 19.0987C21.3613 19.5879 21.3613 20.381 20.8721 20.8702C20.3829 21.3594 19.5897 21.3594 19.1005 20.8702ZM16.1479 23.8229C15.6587 23.3337 15.6587 22.5405 16.1479 22.0513C16.6371 21.5621 17.4303 21.5621 17.9195 22.0513C18.4087 22.5405 18.4087 23.3337 17.9195 23.8229C17.4303 24.3121 16.6371 24.3121 16.1479 23.8229ZM4.63267 23.5276C4.30653 23.2015 4.30653 22.6727 4.63267 22.3465C4.9588 22.0204 5.48758 22.0204 5.81372 22.3465C6.13985 22.6727 6.13985 23.2015 5.81372 23.5276C5.48758 23.8537 4.9588 23.8537 4.63267 23.5276ZM7.58529 26.4802C7.25915 26.1541 7.25915 25.6253 7.58529 25.2992C7.91143 24.973 8.4402 24.973 8.76634 25.2992C9.09248 25.6253 9.09248 26.1541 8.76634 26.4802C8.4402 26.8064 7.91143 26.8064 7.58529 26.4802ZM19.3958 26.4802C19.0697 26.1541 19.0697 25.6253 19.3958 25.2992C19.7219 24.973 20.2507 24.973 20.5768 25.2992C20.903 25.6253 20.903 26.1541 20.5768 26.4802C20.2507 26.8064 19.7219 26.8064 19.3958 26.4802ZM7.29003 20.8702C6.80082 20.381 6.80082 19.5879 7.29003 19.0987C7.77924 18.6094 8.5724 18.6094 9.0616 19.0987C9.55081 19.5879 9.55081 20.381 9.0616 20.8702C8.5724 21.3594 7.77924 21.3594 7.29003 20.8702ZM12.9 21.1655C12.2477 20.5132 12.2477 19.4557 12.9 18.8034C13.5523 18.1511 14.6098 18.1511 15.2621 18.8034C15.9144 19.4557 15.9144 20.5132 15.2621 21.1655C14.6098 21.8178 13.5523 21.8178 12.9 21.1655ZM12.9 15.2602C12.2477 14.608 12.2477 13.5504 12.9 12.8981C13.5523 12.2459 14.6098 12.2459 15.2621 12.8981C15.9144 13.5504 15.9144 14.608 15.2621 15.2602C14.6098 15.9125 13.5523 15.9125 12.9 15.2602ZM9.94739 18.2129C9.29512 17.5606 9.29512 16.503 9.94739 15.8508C10.5997 15.1985 11.6572 15.1985 12.3095 15.8508C12.9618 16.503 12.9618 17.5606 12.3095 18.2129C11.6572 18.8651 10.5997 18.8651 9.94739 18.2129Z" fill="#1D222A"></path></svg>
+                            <div font-size="14px" color="text" class="sc-gtsrHT jFEWVt">MathWallet</div>
+                        </button>
+                        <!-- <button class="mathWalelt btn" >mathWalelt</button> -->
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button class="close btn">关闭</button>
+                </div> -->
+            </div>
+     
+        </div>
+    </div>
+    <script src="./js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="./js/swiper-4.4.1.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="./js/web3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/tp.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/mathwallet.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.0.32/dist/ethers.umd.min.js"></script>
+    <script src="./js/master_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/smartContract.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/usdt_abi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/logic.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/jutils.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/bignumber.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        // //自动滚动
+        // var mySwiper = new Swiper ('.swiper-container', {
+        //     direction: 'vertical', // 垂直切换选项
+        //     loop: false, // 循环模式选项
+        //     speed:2000,
+        //     autoplay: {
+        //         delay: 0,
+        //         stopOnLastSlide: true,
+		// 	    disableOnInteraction: true,
+        //         waitForTransition: false,
+        //         // pauseOnMouseEnter:true,
+        //     },
+        //     slidesPerView:18,
+        //     observer: true,
+		//     observeParents: true,
+        //     // // 如果需要分页器
+        //     // pagination: {
+        //     // el: '.swiper-pagination',
+        //     // },
+            
+        //     // // 如果需要前进后退按钮
+        //     // navigation: {
+        //     // nextEl: '.swiper-button-next',
+        //     // prevEl: '.swiper-button-prev',
+        //     // },
+            
+        //     // // 如果需要滚动条
+        //     // scrollbar: {
+        //     // el: '.swiper-scrollbar',
+        //     // },
+        // })
+        
+        function language() {
+          window.location.href='index.html';
+        }
+        function toTop(){
+            // mySwiper.autoplay.stop()
+            // $(".swiper-wrapper").css("transform","translate3d(0px, 0px, 0px)")
+            $(".swiper-wrapper").scrollTop(0)
+        }
+        function toBottom(){
+            // mySwiper.autoplay.stop()
+            // var val = "-"+($(".swiper-slide").length*20.55-370)
+            // $(".swiper-wrapper").css("transform","translate3d(0px, "+val+"px, 0px)")
+            for(let i in eventTimeout){
+                clearTimeout(eventTimeout[i])
+            }
+            var str = zh_arr.join("")
+            $("#events").html(str)
+            $(".swiper-wrapper").scrollTop(99999)
+            $(".disabled").attr("disabled",false)
+        }
+
+        
+    </script>
+</body>
+</html>

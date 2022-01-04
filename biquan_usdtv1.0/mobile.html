@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover,user-scalable=no">
+    <title>币圈重开模拟器</title>
+    <link rel="stylesheet" type="text/css" href="./css/swiper-4.4.1.css"/>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .clearfix:after{
+            content:"";
+            display:none;
+            height:0;
+            clear:both;
+            visibility: hidden;
+        }
+        .po_re{
+            position: relative;
+        }
+        .po_ab{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-65%);
+        }
+        .left_icon{width:1rem;position: absolute;top:-.3rem;left:-.4rem;}
+        .right_icon{width:1rem;position: absolute;top:-0.3rem;right:-.4rem;}
+        .box_frame{padding:0 .625rem;box-sizing: border-box;}
+        .box{
+            border:1.5px solid #c5b284;
+            border-radius: .3125rem;
+            margin-bottom:.625rem;
+        }
+        .title{
+            line-height:1.5625rem;
+            border-bottom:1.5px solid #c5b284;
+            font-size:1.2rem;
+            font-weight: bold;
+            font-family:"微软雅黑";
+            text-align: center;
+        }
+        .content{
+            background:#151515 url("images/background_m.png");
+            background-size: cover;
+            background-position: center 0;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .header{width:22rem;margin:.9375rem auto 0 auto;display: block;}
+        .time{width:15rem;margin:-0.5rem auto .625rem;color:#60b2dd;}
+        .language{font-size:.75rem;color:#fff;cursor: pointer;width: 4.375rem;margin:0 auto .625rem auto}
+        .reward{
+            height:10.125rem;
+            color:#bca880;
+            text-align: center;
+        }
+        .reward .num{
+            margin-top:1.0625rem;
+            font-size:1.75rem;
+            font-weight:bold;
+        }
+        .reward .unit{
+            margin:1.5625rem auto;
+            font-size:1.375rem;
+            font-weight:bold;
+        }
+        .info{
+            height:10.125rem;
+            color:#bca880;
+            word-wrap: break-word;
+        }
+        .info .con{
+            padding:0 .625rem;
+            font-size: .75rem;
+            line-height: 1.2rem;
+        }
+        .pass{padding:.3125rem;color:#939292;text-align: center;}
+        .event{
+            color:#939292;
+            font-size:1rem;
+            text-align: center;
+        }
+        .event .swiper-container{
+            height: 12.5rem;
+        }
+        .event .btn{
+            display: inline-block;
+            cursor: pointer;
+            font-size:1rem;
+            color:#fff;
+        }
+        .money{padding:.3125rem;color:#939292;text-align: center;}
+        .price{
+            margin-bottom:.625rem;
+            color: #fff;
+            font-size: 1.125rem;
+            text-align: center;
+        }
+        .begin{
+            color:#fff;
+            text-align: center;
+            padding-bottom:.625rem;
+        }
+        .begin .btn{
+            cursor: pointer;
+            display: inline-block;
+        }
+        .begin .btn span{
+            font-size:1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <img class="header" src="images/header_m.png" alt="币圈重开模拟器">
+        <div class="time po_re">
+            <img src="images/time.png"  style="width:15rem;" alt="">
+            <img class="left_icon" style="top:-.1875rem;left:-.3125rem;" src="images/left_icon.png" alt="">
+            <img class="right_icon" style="top:-0.1875rem;right:-.3125rem;" src="images/right_icon.png" alt="">
+            <div class="po_ab" style="width:15rem;text-align: center;" >距离游戏结束：<span id="time">00:00:00</span></div>
+        </div>
+        <div class="language po_re">
+            <img style="width:4.375rem;" src="images/language.png" alt="">
+            <span class="po_ab" >English</span>
+        </div>
+        <div class="clearfix" style="height:10.9375rem">
+            <div class="box_frame" style="padding:0 .3125rem 0 .625rem;float: left;width:50%;">
+                <div class="box reward po_re">
+                    <img class="left_icon" src="images/left_icon.png" alt="">
+                    <div class="title">总奖池</div>
+                    <div class="num">123456</div>
+                    <div class="unit">USDT</div>
+                </div>
+            </div>
+            <div class="box_frame" style="padding:0 .625rem 0 .3125rem;float: right;width:50%;">
+                <div class="box info po_re">
+                    <img class="right_icon" src="images/right_icon.png" alt="">
+                    <div class="title">玩家信息</div>
+                    <div class="con">
+                        <div>最后玩家获得：<span>100</span>USDT</div>
+                        <div>最后通关玩家：</div>
+                        <div>0xA92826b42D51790fBe6678F870217dC69A99fE4b</div>
+                        <div>通关次数最多的玩家：</div>
+                        <div>0xA92826b42D51790fBe6678F870217dC69A99fE4b</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box_frame">
+            <div class="box pass po_re">
+                <img class="left_icon" src="images/left_icon.png" alt="">
+                <img class="right_icon" src="images/right_icon.png" alt="">
+                <div>游戏总次数：<span>18</span> 您的游戏次数：<span>31</span></div>
+                <div>通关概率：<span>0.1%</span> 您的通关次数：<span>31</span></div>
+                <div>通关总人数：<span>31</span></div>
+            </div>
+        </div>
+        <div class="box_frame">
+            <div class="event box po_re">
+                <img class="left_icon" src="images/left_icon.png" alt="">
+                <img class="right_icon" src="images/right_icon.png" alt="">
+                <div style="font-size: 1.375rem;">游戏事件显示</div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">第一轮</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">第二轮</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">啊啊啊啊啊</div>
+                        <div class="swiper-slide">第三轮</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">出生在一个富裕的家庭</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">先天智力超群</div>
+                        <div class="swiper-slide">钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱</div>
+                        <div class="swiper-slide">钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱钱</div>
+                    </div>
+                </div>
+                <div class="btns" style="text-align: center;">
+                    <div class="btn po_re" onclick="toTop()">
+                        <img style="width: 6.25rem;" src="images/btn.png" alt="">
+                        <span class="po_ab">置顶</span>
+                    </div>
+                    <div class="btn po_re" onclick="toBottom()">
+                        <img style="width: 6.25rem;" src="images/btn.png" alt="">
+                        <span class="po_ab">置底</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box_frame">
+            <div class="box money po_re">
+                <img class="left_icon" src="images/left_icon.png" alt="">
+                <img class="right_icon" src="images/right_icon.png" alt="">
+                <div style="display: inline-block;">
+                    <div class="text">已提取金额：</div>
+                    <div class="text"><span>23</span>USDT</div>
+                </div>
+                <div style="display: inline-block;">
+                    <div class="po_re" style="cursor: pointer;color:#fff;">
+                        <img style="width: 6.25rem;" src="images/btn.png" alt="">
+                        <span class="po_ab claim">claim</span>
+                    </div>
+                </div>
+                <div style="display: inline-block;">
+                    <div class="text">未提取金额：</div>
+                    <div class="text"><span>23</span>USDT</div>
+                </div>
+            </div>
+        </div>
+        <div class="price">门票价格：<span>45</span>USDT</div>
+        <div class="begin">
+            <div class="btn po_re">
+                <img style="width: 9.375rem;" src="images/begin.png" width="220" alt="">
+                <span style="width: 9.375rem;" class="po_ab">游戏次数*1</span>
+            </div>
+            <div class="btn po_re">
+                <img style="width: 9.375rem;" src="images/begin.png" width="220" alt="">
+                <span style="width: 9.375rem;" class="po_ab">游戏次数*10</span>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/swiper-4.4.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        //倒计时
+        var showtime = function () {
+            var nowtime = new Date(),  //获取当前时间
+                endtime = new Date("2021/11/11 00:00:00");  //定义结束时间
+            var lefttime = endtime.getTime() - nowtime.getTime(),  //距离结束时间的毫秒数
+                leftd = Math.floor(lefttime/(1000*60*60*24)),  //计算天数
+                lefth = Math.floor(lefttime/(1000*60*60)%24),  //计算小时数
+                leftm = Math.floor(lefttime/(1000*60)%60),  //计算分钟数
+                lefts = Math.floor(lefttime/1000%60);  //计算秒数
+            // return leftd + "天" + lefth + ":" + leftm + ":" + lefts;  //返回倒计时的字符串
+            return lefth + ":" + leftm + ":" + lefts;  //返回倒计时的字符串
+        }
+        var div = document.getElementById("time");
+        setInterval (function () {
+            div.innerHTML = showtime();
+        }, 1000);  //反复执行函数本身
+        //自动滚动
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: false, // 循环模式选项
+            speed:2000,
+            autoplay: {
+                delay: 0,
+                stopOnLastSlide: true,
+			    disableOnInteraction: true,
+                waitForTransition: false,
+                // pauseOnMouseEnter:true,
+            },
+            slidesPerView:10,
+            observer: true,
+		    observeParents: true,
+            // // 如果需要分页器
+            // pagination: {
+            // el: '.swiper-pagination',
+            // },
+            
+            // // 如果需要前进后退按钮
+            // navigation: {
+            // nextEl: '.swiper-button-next',
+            // prevEl: '.swiper-button-prev',
+            // },
+            
+            // // 如果需要滚动条
+            // scrollbar: {
+            // el: '.swiper-scrollbar',
+            // },
+        })
+        function toTop(){
+            mySwiper.autoplay.stop()
+            $(".swiper-wrapper").css("transform","translate3d(0px, 0px, 0px)")
+        }
+        function toBottom(){
+            mySwiper.autoplay.stop()
+            var val = "-"+($(".swiper-slide").length*20.55-370)
+            $(".swiper-wrapper").css("transform","translate3d(0px, "+val+"px, 0px)")
+        }
+    </script>
+</body>
+</html>

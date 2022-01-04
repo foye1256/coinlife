@@ -1,0 +1,37 @@
+{
+    "30001": {
+        "id": 30001,
+        "c_event": "btc开始建立社区自治。",
+        "e_event": "BTC began to establish community autonomy."
+    },
+    "30002": {
+        "id": 30002,
+        "c_event": "2014年v神来中国融资。",
+        "e_event": "In 2014, V God Come to China for financing."
+    },
+    "30003": {
+        "id": 30003,
+        "c_event": "2020年新冠爆发，美国大放水。",
+        "e_event": "In 2020, the new crown broke out and the United States released water."
+    },
+    "30004": {
+        "id": 30004,
+        "c_event": "2026年金融危机爆发。",
+        "e_event": "The financial crisis broke out in 2026."
+    },
+    "30005": {
+        "id": 30005,
+        "c_event": "量子计算机被开发出来，btc算法被破解，区块链进入暗黑时代。",
+        "e_event": "The quantum computer has been developed, the BTC algorithm has been cracked, and the blockchain has entered the dark age."
+    },
+    "30006": {
+        "id": 30006,
+        "c_event": "第三次世界大战爆发，主流货币开始疯狂贬值。",
+        "e_event": "With the outbreak of the Third World War, the mainstream currencies began to depreciate wildly."
+    },
+    "30007": {
+        "id": 30007,
+        "c_event": "世界重新进入到和平期。",
+        "e_event": "The world has entered a period of peace again."
+    }
+}

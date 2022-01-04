@@ -1,0 +1,37 @@
+{
+    "50001": {
+        "id": 50001,
+        "c_event": "2010年5月22号有人用10000比特币跟你换了几块披萨，你对传播区块链有了使命感。",
+        "e_event": "On May 22, 2010, someone exchanged 10000 BTC for several pizzas. You have a sense of mission to spread the blockchain."
+    },
+    "50002": {
+        "id": 50002,
+        "c_event": "你发现v神是个技术宅男，于是叫来了两个嫩模和他进一步交流。",
+        "e_event": "You find that V God is a technical otaku, so you call two young models to further communicate with him."
+    },
+    "50003": {
+        "id": 50003,
+        "c_event": "新冠爆发，你闭门不出，在家盯着屏幕上显示着的是整个币圈波浪壮阔的大牛市，你终于小有成就。",
+        "e_event": "When the new crown broke out, you stayed closed and stared at the big bull market in the whole coin circle on the screen. You finally made a small achievement."
+    },
+    "50004": {
+        "id": 50004,
+        "c_event": "这一年，出了一种长生药，你使用btc在暗网购买了这种药物。",
+        "e_event": "This year, a kind of longevity medicine was produced. You used BTC to buy it on the dark net."
+    },
+    "50005": {
+        "id": 50005,
+        "c_event": "你为了理想而努力，最终写出了抗量子加密算法。",
+        "e_event": "You worked hard for your ideal and finally wrote an anti quantum encryption algorithm."
+    },
+    "50006": {
+        "id": 50006,
+        "c_event": "你将资产换成了btc，并且记好了密钥，将btc换成了你大脑中永远的资产。",
+        "e_event": "You change the asset into BTC, and remember the key, and change the BTC into the eternal asset in your brain."
+    },
+    "50007": {
+        "id": 50007,
+        "c_event": "你在战争中救助了很多人，你成为了人们心中的神。",
+        "e_event": "You saved many people in the war, and you became the God in people's hearts."
+    }
+}
