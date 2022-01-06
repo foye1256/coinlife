@@ -1,4 +1,6 @@
-    function startApp(account) {
+import { WalletWeb3 } from "../network/WalletWeb3.js";
+
+function startApp(account) {
         //获取合约连接
         establishConnection();
         queryConnection();
@@ -234,204 +236,360 @@
             modal.style.display = "none";
         }
 
-        function metaMasks(){
+        
 
-            const context = (typeof window === 'object') ? window : global;
+        async function metaMasks(){
 
-            if(typeof(context.web3) === 'undefined'){
-                alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
-                return;
-            } else{
+            this.WalletWeb3 = new WalletWeb3();
 
-                this.web3  = new Web3(context.web3.currentProvider);
-       
-                //MetaMask 或mathwallet钱包
-                if(this.web3.currentProvider.isMetaMask == true){
-                    // alert("当前是有效环境");
+            const enable = await this.WalletWeb3.web3.currentProvider.enable();
 
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
+            const address = await this.WalletWeb3.getMetaMaskAddress();
 
-                   modal.style.display = "none";
-                   
-                }
+            if (typeof(address) != 'undefined' && address.length > 0) {
+                    $('#playerAddress').html(plusXing(address,5,4));
+    
+                    modal.style.display = "none";
+    
             }
+
+            // const context = (typeof window === 'object') ? window : global;
+
+            // if(typeof(context.web3) === 'undefined'){
+            //     alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
+            //     return;
+            // } else{
+
+            //     this.web3  = new Web3(context.web3.currentProvider);
+       
+            //     //MetaMask 或mathwallet钱包
+            //     if(this.web3.currentProvider.isMetaMask == true){
+            //         // alert("当前是有效环境");
+
+            //         // 请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            //         const enable = await context.web3.currentProvider.enable();
+
+            //         // 授权获取账户
+            //         var accounts = await this.web3.eth.getAccounts();
+
+            //         // 取第一个账户
+            //         $('#playerAddress').html(plusXing(accounts[0],5,4));
+            //         // this.web3.eth.getAccounts((err, accounts) => {
+            //         //     if (err) {
+            //         //         alert(err)
+            //         //     }
+
+            //         //     $('#playerAddress').html(plusXing(accounts[0],5,4));
+            //         // })
+
+            //        modal.style.display = "none";
+                   
+            //     }
+            // }
         }
 
-        function tokenPockets(){
+        async function tokenPockets(){
 
-            const context = (typeof window === 'object') ? window : global;
+            this.WalletWeb3 = new WalletWeb3();
 
-            if(typeof(context.web3) === 'undefined'){
-                alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
-                return;
-            } else{
+            const enable = await this.WalletWeb3.web3.currentProvider.enable();
+
+            const address = await this.WalletWeb3.getTokenPocketAddress();
+
+            if (typeof(address) != 'undefined' && address.length > 0) {
+                    $('#playerAddress').html(plusXing(address,5,4));
+    
+                    modal.style.display = "none";
+    
+            }
+            // this.TokenPocketWeb3 = new TokenPocketWeb3();
+
+            //  //请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            // const enable = await this.TokenPocketWeb3.web3.currentProvider.enable();
+
+            // const address =  await this.TokenPocketWeb3.getAddress();
+
+            // if (typeof(address) != 'undefined' && address.length > 0) {
+            //     $('#playerAddress').html(plusXing(address,5,4));
+
+            //     modal.style.display = "none";
+
+            // }
+
+            // const context = (typeof window === 'object') ? window : global;
+
+            // if(typeof(context.web3) === 'undefined'){
+            //     alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
+            //     return;
+            // } else{
+
+            //     this.web3  = new Web3(context.web3.currentProvider);
+
+            //     // alert(this.web3.currentProvider.isTokenPocket);
+            //     if(this.web3.currentProvider.isTokenPocket || this.web3.currentProvider.isMetaMask == true){
+            //         // alert("当前是 isToken 有效环境");
+            //         // 请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            //         const enable = await context.web3.currentProvider.enable();
+            //         // 授权获取账户
+            //         var accounts = await this.web3.eth.getAccounts();
+            //         $('#playerAddress').html(plusXing(accounts[0],5,4));
+            //         modal.style.display = "none";
+            //     }
+
 
                 //tp钱包
-                if(tp.isConnected()){
-                    // alert("当前是 tp 有效环境");
-                    tp.getCurrentWallet().then(function (res) {
-                        $('#playerAddress').html(plusXing(res.data.address,5,4));
-                    });
+                // if(tp.isConnected()){
+                //     // alert("当前是 tp 有效环境");
+                //     tp.getCurrentWallet().then(function (res) {
+                //         $('#playerAddress').html(plusXing(res.data.address,5,4));
+                //     });
 
-                    modal.style.display = "none";
-                    return;
-                }
+                //     modal.style.display = "none";
+                //     return;
+                // }
 
-                this.web3  = new Web3(context.web3.currentProvider);
-       
+               
                 //MetaMask 或mathwallet钱包
-                if(this.web3.currentProvider.isMetaMask == true){
-                    // alert("当前是有效环境");
+                // if(this.web3.currentProvider.isMetaMask == true){
+                //     // alert("当前是有效环境");
 
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
+                //     // 请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+                //     const enable = await context.web3.currentProvider.enable();
+                //     // 授权获取账户
+                //     var accounts = await this.web3.eth.getAccounts();
 
-                   modal.style.display = "none";
+                //     $('#playerAddress').html(plusXing(accounts[0],5,4));
 
-                   return;
+                //     // this.web3.eth.getAccounts((err, accounts) => {
+                //     //     if (err) {
+                //     //         alert(err)
+                //     //     }
+                //     //     alert(accounts[0]);
+                //     //     $('#playerAddress').html(plusXing(accounts[0],5,4));
+                //     // })
+
+                //    modal.style.display = "none";
+
+                //    return;
                    
-                }
-            }
+                // }
+            // }
         }
 
-        function imTokens(){
+        async function imTokens(){
 
-            const context = (typeof window === 'object') ? window : global;
+            this.WalletWeb3 = new WalletWeb3();
 
-            if(typeof(context.web3) === 'undefined'){
-                alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
-                return;
-            } else{
+            const enable = await this.WalletWeb3.web3.currentProvider.enable();
 
-                //imToken钱包
-                if (window.imToken === true || window.ethereum.isImToken === true) {
+            const address = await this.WalletWeb3.getImTokenAddress();
 
-                    // alert("当前是 imToken 有效环境");
-                    imToken.callAPI('user.getCurrentAccount', function(err, address) {
-                        if(err) {
-                            alert(err)
-                        } else {
-                            // alert("address11:"+address)
-                            $('#playerAddress').html(plusXing(address,5,4));
-                        }
-                    })
+            if (typeof(address) != 'undefined' && address.length > 0) {
+                    $('#playerAddress').html(plusXing(address,5,4));
+    
+                    modal.style.display = "none";
+    
+            }
+
+            // this.ImTokenWeb3 = new ImTokenWeb3();
+
+            //  //请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            // const enable = await this.ImTokenWeb3.web3.currentProvider.enable();
+
+            // const address =  await this.ImTokenWeb3.getAddress();
+
+            // if (typeof(address) != 'undefined' && address.length > 0) {
+            //     $('#playerAddress').html(plusXing(address,5,4));
+
+            //     modal.style.display = "none";
+
+            // }
+
+            // const context = (typeof window === 'object') ? window : global;
+
+            // if(typeof(context.web3) === 'undefined'){
+            //     alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
+            //     return;
+            // } else{
+
+            //     //imToken钱包
+            //     if (window.imToken === true || window.ethereum.isImToken === true) {
+
+            //         // alert("当前是 imToken 有效环境");
+            //         imToken.callAPI('user.getCurrentAccount', function(err, address) {
+            //             if(err) {
+            //                 alert(err)
+            //             } else {
+            //                 // alert("address11:"+address)
+            //                 $('#playerAddress').html(plusXing(address,5,4));
+            //             }
+            //         })
                     
-                    // this.web3  = new Web3(context.web3.currentProvider);
-                    // this.web3.eth.getAccounts((err, accounts) => {
-                    //     if (err) {
-                    //         alert(err)
-                    //     }
-                    //     $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    // })
+            //         // this.web3  = new Web3(context.web3.currentProvider);
+            //         // this.web3.eth.getAccounts((err, accounts) => {
+            //         //     if (err) {
+            //         //         alert(err)
+            //         //     }
+            //         //     $('#playerAddress').html(plusXing(accounts[0],5,4));
+            //         // })
 
-                   modal.style.display = "none";
+            //        modal.style.display = "none";
 
-                    return;
-                }
+            //         return;
+            //     }
 
                 
        
-                //MetaMask 或mathwallet钱包
-                if(this.web3.currentProvider.isMetaMask == true){
-                    // alert("当前是有效环境");
+            //     //MetaMask 或mathwallet钱包
+            //     if(this.web3.currentProvider.isMetaMask == true){
+            //         // alert("当前是有效环境");
 
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
+            //         this.web3.eth.getAccounts((err, accounts) => {
+            //             if (err) {
+            //                 alert(err)
+            //             }
+            //             $('#playerAddress').html(plusXing(accounts[0],5,4));
+            //         })
 
-                   modal.style.display = "none";
+            //        modal.style.display = "none";
 
-                   return;
+            //        return;
                    
-                }
-            }
+            //     }
+            // }
         }
 
-        function trustWallets(){
+        async function trustWallets(){
 
-            const context = (typeof window === 'object') ? window : global;
+            this.WalletWeb3 = new WalletWeb3();
 
-            if(typeof(context.web3) === 'undefined'){
-                alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
-                return;
-            } else{
+            const enable = await this.WalletWeb3.web3.currentProvider.enable();
 
+            const address = await this.WalletWeb3.getTrustAddress();
 
-                this.web3  = new Web3(context.web3.currentProvider);
-                //trustwallet 钱包
-                if(this.web3.currentProvider.isTrust){
-                    // alert("当前是 trustwallet 有效环境");
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
-
+            if (typeof(address) != 'undefined' && address.length > 0) {
+                    $('#playerAddress').html(plusXing(address,5,4));
+    
                     modal.style.display = "none";
-
-                    return;
-                }
-       
-                //MetaMask 或mathwallet钱包
-                if(this.web3.currentProvider.isMetaMask == true){
-                    // alert("当前是有效环境");
-
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
-
-                   modal.style.display = "none";
-
-                   return;
-                   
-                }
+    
             }
+
+            // this.trustWeb3 = new TrustWeb3();
+
+            //  //请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            // const enable = await this.trustWeb3.web3.currentProvider.enable();
+
+            // const address =  await this.trustWeb3.getAddress();
+
+            // if (typeof(address) != 'undefined' && address.length > 0) {
+            //     $('#playerAddress').html(plusXing(address,5,4));
+
+            //     modal.style.display = "none";
+
+            // }
         }
 
-        function mathWalelts(){
+        // function trustWallets(){
+        //     this.trustWeb3 = new TrustWeb3();
 
-            const context = (typeof window === 'object') ? window : global;
+        //     const address =  this.trustWeb3.getAddress();
 
-            if(typeof(context.web3) === 'undefined'){
-                alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
-                return;
-            } else{
+        //     const context = (typeof window === 'object') ? window : global;
 
-                this.web3  = new Web3(context.web3.currentProvider);
+        //     if(typeof(context.web3) === 'undefined'){
+        //         alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
+        //         return;
+        //     } else{
+
+
+        //         this.web3  = new Web3(context.web3.currentProvider);
+        //         //trustwallet 钱包
+        //         if(this.web3.currentProvider.isTrust){
+        //             // alert("当前是 trustwallet 有效环境");
+        //             this.web3.eth.getAccounts((err, accounts) => {
+        //                 if (err) {
+        //                     alert(err)
+        //                 }
+        //                 $('#playerAddress').html(plusXing(accounts[0],5,4));
+        //             })
+
+        //             modal.style.display = "none";
+
+        //             return;
+        //         }
        
-                //MetaMask 或mathwallet钱包
-                if(window.mathwallet.isMathWallet() || this.web3.currentProvider.isMetaMask == true){
-                    // alert("当前是有效环境");
+        //         //MetaMask 或mathwallet钱包
+        //         if(this.web3.currentProvider.isMetaMask == true){
+        //             // alert("当前是有效环境");
 
-                    this.web3.eth.getAccounts((err, accounts) => {
-                        if (err) {
-                            alert(err)
-                        }
-                        $('#playerAddress').html(plusXing(accounts[0],5,4));
-                    })
+        //             this.web3.eth.getAccounts((err, accounts) => {
+        //                 if (err) {
+        //                     alert(err)
+        //                 }
+        //                 $('#playerAddress').html(plusXing(accounts[0],5,4));
+        //             })
 
-                   modal.style.display = "none";
+        //            modal.style.display = "none";
 
-                   return;
+        //            return;
                    
-                }
+        //         }
+        //     }
+        // }
+
+        async function mathWalelts(){
+
+            this.WalletWeb3 = new WalletWeb3();
+
+            const enable = await this.WalletWeb3.web3.currentProvider.enable();
+
+            const address = await this.WalletWeb3.getMathWalletAddress();
+
+            if (typeof(address) != 'undefined' && address.length > 0) {
+                    $('#playerAddress').html(plusXing(address,5,4));
+    
+                    modal.style.display = "none";
+    
             }
+            // this.MathWalletWeb3 = new MathWalletWeb3();
+
+            //  //请求用户授权 解决web3js无法直接唤起Meta Mask获取用户身份
+            // const enable = await this.MathWalletWeb3.web3.currentProvider.enable();
+
+            // const address =  await this.MathWalletWeb3.getAddress();
+
+            // if (typeof(address) != 'undefined' && address.length > 0) {
+            //     $('#playerAddress').html(plusXing(address,5,4));
+
+            //     modal.style.display = "none";
+
+            // }
+        //     const context = (typeof window === 'object') ? window : global;
+
+        //     if(typeof(context.web3) === 'undefined'){
+        //         alert('看起来您需要一个 Dapp 浏览器才能开始使用,请安装 MetaMask,请连接币安智能链！');
+        //         return;
+        //     } else{
+
+        //         this.web3  = new Web3(context.web3.currentProvider);
+       
+        //         //MetaMask 或mathwallet钱包
+        //         if(window.mathwallet.isMathWallet() || this.web3.currentProvider.isMetaMask == true){
+        //             // alert("当前是有效环境");
+
+        //             this.web3.eth.getAccounts((err, accounts) => {
+        //                 if (err) {
+        //                     alert(err)
+        //                 }
+        //                 $('#playerAddress').html(plusXing(accounts[0],5,4));
+        //             })
+
+        //            modal.style.display = "none";
+
+        //            return;
+                   
+        //         }
+        //     }
         }
         
     }
@@ -577,10 +735,10 @@
     }
     
     //d定时更新数据
-    window.setInterval('loopPoolInfo()',5000);
+    // window.setInterval('loopPoolInfo()',5000);
 
     //倒计时
-    window.setInterval('loopCountdown()',1000);
+    // window.setInterval('loopCountdown()',1000);
 
     // function toTop(){
     //     // mySwiper.autoplay.stop()
